@@ -6,6 +6,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       auth = request.env["omniauth.auth"]
       user = User.where(provider: auth["provider"], uid: auth["uid"])
               .first_or_initialize(email: auth["info"]["email"])
+      user.oauth_token = auth['credentials']['token']
+      user.oauth_refresh_token = ''
+      user.oauth_expires_at = Time.at(auth['credentials']['expires_at']).to_datetime
       user.password = Devise.friendly_token[0,20]
       user.save!
   

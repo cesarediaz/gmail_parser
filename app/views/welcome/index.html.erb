@@ -1,3 +1,18 @@
 <% if current_user %>
-   Welcome to Gmail Parser!
+    <h1>Welcome to Gmail Parser!</h1>
+
+    <div>
+      <h> <%= @emails.count %> emails found with text search </h1>  
+      <small>"<%= @search %>"</small>
+    </div>
+    
+    <ul>
+      <% @emails.each do |email| %>
+        <li>
+          Subject: <%= email.subject %>
+          <br/>
+        </li>
+      <% end %>
+    </ul>
+    
 <% end %>
