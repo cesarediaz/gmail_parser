@@ -28,6 +28,9 @@ ActiveRecord::Schema.define(version: 2018_06_04_222732) do
     t.string "provider"
     t.string "uid"
     t.string "remember_token"
+    t.string "oauth_token"
+    t.string "oauth_refresh_token"
+    t.datetime "oauth_expires_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
