@@ -1,0 +1,60 @@
+<% if @error %>
+  <div>
+    <h2><%= @error %></h2>
+  </div>
+<% end %>
+
+<% unless @error %>
+  <div>
+    <h2>Emails found : <%= @paypal_transactions.count %></h2>
+  </div>
+<% end %>
+
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th scope="col">
+        Company
+      </th>    
+      <th scope="col">
+        Date
+      </th>
+      <th scope="col">
+        Description
+      </th>
+      <th scope="col">
+        Price
+      </th>
+      <th scope="col">
+        Quantity
+      </th>
+      <th scope="col">
+        Import
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @paypal_transactions.each do |company, date, description, price, quantity, import| %>
+      <tr>
+        <td>
+          <%= company %>
+        </td>      
+        <td>
+          <%= date %>
+        </td>
+        <td>
+          <%= description %>
+        </td>
+        <td>
+          <%= price %>
+        </td>
+        <td>
+          <%= quantity %>
+        </td>
+        <td>
+          <%= import %>
+        </td>
+      </tr>
+    <% end %>
+  <tbody>
+</table>
