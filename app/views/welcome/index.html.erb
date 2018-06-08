@@ -1,18 +1,5 @@
 <% if current_user %>
-    <h1>Welcome to Gmail Parser!</h1>
+    <h1>Paypal</h1>
 
-    <div>
-      <h> <%= @emails.count %> emails found with text search </h1>  
-      <small>"<%= @search %>"</small>
-    </div>
-    
-    <ul>
-      <% @emails.each do |email| %>
-        <li>
-          Subject: <%= email.subject %>
-          <br/>
-        </li>
-      <% end %>
-    </ul>
-    
+    <%= render partial: 'paypal_transactions', locals: {paypal_transactions: @paypal_transactions} %>
 <% end %>
