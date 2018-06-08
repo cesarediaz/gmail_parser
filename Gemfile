@@ -41,7 +41,7 @@ gem 'devise'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'google-api-client', '~> 0.11'
-gem 'gmail'
+gem 'gmail', git: 'git://github.com/gmailgem/gmail.git', branch: 'master'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

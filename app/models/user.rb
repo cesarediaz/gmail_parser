@@ -6,4 +6,6 @@ class User < ApplicationRecord
          :timeoutable,
          :omniauthable, omniauth_providers: [:google_oauth2]
 
+  has_many :transactions
+
 end
