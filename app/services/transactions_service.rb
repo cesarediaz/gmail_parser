@@ -1,4 +1,6 @@
 class TransactionsService
+  include GmailScrapper
+  
   SELLERS = { paypal: { filter_email_phrase: 'paypal Recibo de su pago realizado' } }
 
   def initialize(current_user)
