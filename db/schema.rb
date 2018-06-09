@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2018_06_08_124318) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "transactions", force: :cascade do |t|
     t.integer "user_id"
     t.string "company"
@@ -45,7 +48,6 @@ ActiveRecord::Schema.define(version: 2018_06_08_124318) do
     t.datetime "oauth_expires_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
 end
