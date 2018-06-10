@@ -33,7 +33,7 @@ class TransactionsService
     transactions = []
     emails.messages&.each do |email|
       message = get_user_message(service, email)
-      transactions <<  GmailScrapper.paypal(message)
+      transactions <<  GmailScrapper::Paypal.call(message)
     end
     transactions.reverse!
   end
@@ -51,7 +51,9 @@ class TransactionsService
   end
 
   def save_transactions(transactions)
-    return [] if transactions.empty?
+    return [] if transactions.flatten.empty?
+    transactions = transactions.delete_if {|e| e == [] }
+
     transactions.each do |company, date, description, price, quantity, import|
       description = 'Not available' if description.empty?
       Transaction.create(company: company,
