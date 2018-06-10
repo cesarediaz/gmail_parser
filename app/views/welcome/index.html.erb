@@ -1,5 +1,6 @@
-<% if current_user %>
-    <h1>Paypal</h1>
-
-    <%= render partial: 'paypal_transactions', locals: {paypal_transactions: @paypal_transactions} %>
+<% if flash[:notice] %>
+  <div class="alert alert-success" role="alert">
+    <%= flash[:notice] %>
+  </div>
 <% end %>
+    <%= render partial: 'transactions', locals: {transactions: @transactions} %>

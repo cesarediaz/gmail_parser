@@ -1,14 +1,6 @@
-<% if @error %>
-  <div>
-    <h2><%= @error %></h2>
-  </div>
-<% end %>
-
-<% unless @error %>
-  <div>
-    <h2>Emails found : <%= @paypal_transactions.count %></h2>
-  </div>
-<% end %>
+<div>
+  <h2>Emails found : <%= @transactions.count %></h2>
+</div>
 
 <table class="table table-sm">
   <thead>
@@ -34,25 +26,25 @@
     </tr>
   </thead>
   <tbody>
-    <% @paypal_transactions.each do |company, date, description, price, quantity, import| %>
+    <% @transactions.each do |t| %>
       <tr>
         <td>
-          <%= company %>
+          <%= t.company %>
         </td>      
         <td>
-          <%= date %>
+          <%= t.date %>
         </td>
         <td>
-          <%= description %>
+          <%= t.description %>
         </td>
         <td>
-          <%= price %>
+          <%= t.price %>
         </td>
         <td>
-          <%= quantity %>
+          <%= t.quantity %>
         </td>
         <td>
-          <%= import %>
+          <%= t.import %>
         </td>
       </tr>
     <% end %>
